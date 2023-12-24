@@ -1,0 +1,8 @@
+Sockets work on the client and server model.
+All the clients are connected to the server and message passing happens between them. When we are playing a game then all the
+instances of game happening in the mobile will be identified as client and they are connnected to the local server which
+host all the clients. There will be verification and broadcasting in client- server model. Modems will be having internet connection
+and routers are wired into the modem and allows other machines to connect modem and have internet. Modems are connected to internet
+via satellite dishes or wires connecting to internet towers. Machines can connect to router wirelessly or wired via ethernet.
+Each modem will be given a public ip adress which reperesents your physical adress in the internet. You router will assign
+a private ip adress to local machines to distinguish them.
