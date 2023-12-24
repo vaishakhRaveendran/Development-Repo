@@ -6,3 +6,36 @@ and routers are wired into the modem and allows other machines to connect modem 
 via satellite dishes or wires connecting to internet towers. Machines can connect to router wirelessly or wired via ethernet.
 Each modem will be given a public ip adress which reperesents your physical adress in the internet. You router will assign
 a private ip adress to local machines to distinguish them.
+
+
+
+Server Side...........
+A server machine can handle multiple kinds of different processes simultaneously. In a typical server environment,
+various processes may be running concurrently to perform different tasks and services.The different process
+could be Web Server Process, Database Server Process, File Server Process, Application Server Process.
+A single server can run multiple processes simultaneously, handling various roles such as web serving, database management,
+file serving, and application processing. This is a common setup in many server environments and is often referred to as a
+"stack" or a "server stack." Each type of process is designed to serve a specific function, and they can coexist on the
+same server because they typically operate on different ports or communicate through different protocols.
+In server environments, different types of server processes distinguish themselves through designated port numbers.
+For instance, web servers typically listen on ports 80 for HTTP and 443 for HTTPS traffic. Database servers utilize
+specific ports, like MySQL, which commonly uses port 3306. File servers, such as those employing Samba, listen on defined ports,
+such as 137-139 and 445, for file transfer protocols. Application servers, like Apache Tomcat, are configured to listen
+on user-specified ports, such as 8080. By associating processes with distinct port numbers, these servers can coexist on
+a single machine, allowing for efficient handling of diverse tasks and services.The layer that establishes connections between
+different processes is the Transport Layer in the OSI (Open Systems Interconnection) model or the Transport Layer in the
+TCP/IP model.
+
+#What happens in production
+In production setup with Nginx as the central server, diverse processes seamlessly operate on different ports,
+showcasing the server's versatility. Nginx efficiently manages web requests on the standard HTTP (Port 80) and HTTPS
+(Port 443) ports, serving as a robust web server. Simultaneously, it acts as a reverse proxy and load balancer on Port 8000,
+intelligently distributing incoming requests among various backend servers or processes. The application server,
+responsible for dynamic content generation, operates on Port 8080, while the API server, handling interactions with
+the application's API, processes requests on Port 5000. This integrated approach highlights how a single server, in this case,
+Nginx, can fulfill multiple roles, each distinct process seamlessly communicating through designated ports.
+
+It's possible for a primary server to run different specific servers for web, data, and DNS services on different ports and
+instantiate them as needed. This concept is often referred to as multiplexing or multi-service hosting.
+For a web server different clients are different threads of a web server process in a primary server that could handle
+web server,database server and many server.
