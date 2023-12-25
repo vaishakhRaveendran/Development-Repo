@@ -40,7 +40,7 @@ instantiate them as needed. This concept is often referred to as multiplexing or
 For a web server different clients are different threads of a web server process in a primary server that could handle
 web server,database server and many server.
 
-FLASK.......
+FLASK..........
 You may be confused how the flask server is running ,actually the flask library have implemented  a socket
 program for web server and it listen for http requests at port 5000.
 You got the operating system functionality called socket which could be used to listen for connections and
