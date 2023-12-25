@@ -43,3 +43,13 @@ web server,database server and many server.
 FLASK.......
 You may be confused how the flask server is running ,actually the flask library have implemented  a socket
 program for web server and it listen for http requests at port 5000.
+You got the operating system functionality called socket which could be used to listen for connections and
+then you got the functionality you implement like the flask server and stuff.
+
+
+OS....
+Locks and semaphores are used for preventing race condition among threads of same process while accessing the
+critical section while message passing ,sharing memory and sockets are part of interprocess communication.
+
+Pipeline.......
+There is another technology like
