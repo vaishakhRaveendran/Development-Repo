@@ -52,4 +52,5 @@ Locks and semaphores are used for preventing race condition among threads of sam
 critical section while message passing ,sharing memory and sockets are part of interprocess communication.
 
 Pipeline.......
-There is another technology like
+There is another technology like pipeline which could be used for taking output of one program as input to
+another program.This was called the unix pipeline it could be used for connecting the programs..
