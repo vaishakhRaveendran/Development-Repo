@@ -44,7 +44,7 @@ def start():
         conn, addr = server.accept()#the accept methods returns when a new connection is established until then it waits.
         #when a new connection established then a new thread is created.The handle client function deals connect between single
         #client and server
-        thread = threading.Thread(target=handle_client,args=(con,addr))
+        thread = threading.Thread(target=handle_client,args=(conn,addr))
         thread.start()
         print(f'[ACTIVE THREADS]:{threading.activeCount()-1}')
         #Active no of threads for this process will be printed...
