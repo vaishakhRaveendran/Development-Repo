@@ -12,8 +12,8 @@ SERVER = "192.168.126.128"
 
 #A socket kind off open up the device to other machines
 #we need to have the server and port then bind them together with the socket
+SERVER = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 ADDR = (SERVER,PORT)
-server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 server.bind(ADDR)
 
 def handle_client(conn,addr):
@@ -33,9 +33,11 @@ def handle_client(conn,addr):
         print(f'[{addr}]:{msg}')
 
     conn.close()
+
 #Inside the  start function we define how our server will listen and respond by printing messages.
 def start():
     server.listen()
+    print(f'listening on {SERVER}')
     while True:
         conn, addr = server.accept()#the accept methods returns when a new connection is established until then it waits.
         #when a new connection established then a new thread is created.The handle client function deals connect between single
