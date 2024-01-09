@@ -28,7 +28,7 @@ def handle_client(conn,addr):
         #each user since we dont want other users to get blocked..
         # the argument for recv is size of message. We will fix the size of first message or header to be 64 byte and header will contain
         #the size of next message..
-        msg_length = int(mes_length)
+        msg_length = int(msg_length)
         msg = conn.recv(msg_length).decode(FORMAT)
         if msg == DISCONNECT_MESSAGE:
             connected=False
