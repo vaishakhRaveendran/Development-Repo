@@ -6,13 +6,15 @@ HEADER=64
 PORT = 5050
 DISCONNECT_MESSAGE='!DISCONNECT'
 #Select port for running the server
-SERVER = "192.168.126.128"
+# SERVER = "192.168.126.128"
+SERVER =socket.gethostbyname(socket.gethostname())
 #choosing the ipv4 because i want to run my server locally.This will be the ip of server
 #socket.gethostbyname(socket.gethostname()) this peice of code also returns the local ip
 
 #A socket kind off open up the device to other machines
 #we need to have the server and port then bind them together with the socket
-SERVER = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+
 ADDR = (SERVER,PORT)
 server.bind(ADDR)
 
