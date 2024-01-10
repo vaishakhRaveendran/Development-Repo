@@ -54,3 +54,5 @@ critical section while message passing ,sharing memory and sockets are part of i
 Pipeline.......
 There is another technology like pipeline which could be used for taking output of one program as input to
 another program.This was called the unix pipeline it could be used for connecting the programs..
+
+How to implement a web server ? Is it the same
