@@ -27,6 +27,12 @@ class Video(Resource):
         videos[video_id] = args
         return videos[video_id], 201
 
+    def delete(self,video_id):
+        if video_id in videos:
+            del videos[video_id]
+            return '',204
+        else:
+            abort(404, message="video not found")
 
 api.add_resource(Video, "/video/<int:video_id>")
 
