@@ -1,9 +1,14 @@
 from flask import Flask, request
 from flask_restful import Api, Resource, reqparse, abort
+from flask_sqlalchemy import SQLAlchemy
 
 # Wrapping the API over the app
 app = Flask(__name__)
 api = Api(app)
+#Creating a new db
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///database.db'
+db = SQLAlchemy(app)
+db.create_all()
 
 # Video put argument parser
 video_put_args = reqparse.RequestParser()
@@ -12,7 +17,6 @@ video_put_args.add_argument("views", type=int, help="Views of the video", requir
 video_put_args.add_argument("likes", type=int, help="Likes of the video", required=True)
 
 videos = {}
-
 
 def abort_if_video_id_not_exist(video_id):
     if video_id not in videos:
