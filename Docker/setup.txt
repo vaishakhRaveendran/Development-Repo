@@ -1,0 +1,7 @@
+A docker image is a standalone,lightweight and executable package that include everything to run a piece of software
+like code,runtime, libraries and system tools even the os.The image is like a recipe which contains instruction
+and ingredients for cooking a software.We want to run the image somewhere that is where container comes
+in.Container is the runnable instance of the image.Container is the real thing created from the recipee...
+We can run multiple containers from the same image.Docker volume is a persistent data storage mechanism which allows
+sharing data between docker and system.The system could be a server ,machine or another container.Volume act as
+as shared folder outside the contaier
