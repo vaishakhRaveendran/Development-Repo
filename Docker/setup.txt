@@ -5,3 +5,7 @@ in.Container is the runnable instance of the image.Container is the real thing c
 We can run multiple containers from the same image.Docker volume is a persistent data storage mechanism which allows
 sharing data between docker and system.The system could be a server ,machine or another container.Volume act as
 as shared folder outside the contaier...
+Docker network is a  network enabling communication between different containers or external world. It would
+allow communciation to docker containers while still maintaining isolation.
+Docker workflow-Host,Client and Registry.The client is we instructing the host which is the backend process.
+Host runs the instruction issued by the client.
