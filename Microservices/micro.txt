@@ -1,0 +1,2 @@
+Microservices are independent services maintaining their own database and communicate through event bus..
+Each of the microservices could use separate programming language according to their needs.
