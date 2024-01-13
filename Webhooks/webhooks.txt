@@ -1,0 +1,3 @@
+Web hooks are event driven and the server will notify us when an event happens via a callback which is a function
+or a endpoint. The server will call our callback function without us asking first.We will get notified realtime using
+the webhook structure.
