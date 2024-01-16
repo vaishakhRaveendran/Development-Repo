@@ -3,3 +3,8 @@ or a endpoint. The server will call our callback function without us asking firs
 the webhook structure.
 
 You could use a ngrok to create a public ip which could forward the webhooks to a server listening locally...
+
+There are several ways of creating event driven apis
+1.Webhooks
+2.Websockets
+3.Http Streaming
