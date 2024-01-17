@@ -102,7 +102,8 @@ const getBet= (balance,lines) => {
   }
 }
 
-console.log(spin())
+
 let balance=deposit()
 const numberOfLines= getNumber()
 const bet =getBet(balance,numberOfLines)
+const reels=spin()
