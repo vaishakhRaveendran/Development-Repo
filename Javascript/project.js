@@ -102,6 +102,17 @@ const getBet= (balance,lines) => {
   }
 }
 
+const transpose=(reels)=>{
+   const rows=[]
+   for(let i =0;i<ROWS;i++)
+   {
+      rows.push([])
+      for(let j=0;j<COLUMNS;j++){
+         rows[i].push(reels[j][i])
+      }
+   }
+   return rows
+}
 
 let balance=deposit()
 const numberOfLines= getNumber()
