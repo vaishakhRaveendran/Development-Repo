@@ -1,3 +1,4 @@
+/////////// AGENDA ///////////////////////////////
 // Deposit money
 // Determine no of lines to bet on
 // Collect a bet amount
@@ -8,7 +9,54 @@
 
 const prompt = require('prompt-sync')();
 
-//Deposit amount
+//Constants for the machine..
+const ROWS=3;
+const COLUMNS=3;
+
+//Diff symbol options for a column/reel...
+const SYMBOLS_COUNT = {
+   A: 2,
+   B: 4,
+   C: 6,
+   D: 8
+};
+
+// Multiplier of each row
+const SYMBOLS_VALUES = {
+   A: 5,
+   B: 4,
+   C: 3,
+   D: 2
+};
+
+
+const spin = () => {
+ const symbols=[];
+ for (const [symbol,count] of Object.entries(SYMBOLS_COUNT)){
+      for (let i=0;i<count;i++)
+      {
+         symbols.push(symbol);
+         //use push to append an entry into the array..
+      }
+
+   }
+
+   const reels=[[],[],[]];
+   for (let i=0;i<COLUMNS;i++){
+      const reelSymbols= [...symbols];
+      for (let j=0;j<ROWS;j++){
+         const randomIndex=Math.floor(Math.random()*reelSymbols.length);
+         const selectedSymbol=reelSymbols[randomIndex];
+         reels[i].push(selectedSymbol);
+         reelSymbols.splice(randomIndex,1);
+      }
+   }
+   return reels;
+
+}
+
+
+//Deposit amount of user...
 const deposit = () => {
 while(true){
      const depositAmount = prompt("Enter the deposit amount: ")
@@ -23,7 +71,7 @@ while(true){
   }
 }
 
-//No of lines
+//No of lines to bet on...
 const getNumber = () => {
   while(true){
      const lines = prompt("Enter the no of lines(1-3): ")
@@ -39,7 +87,7 @@ const getNumber = () => {
 }
 
 
-//Get bet ....
+//Get bet per lines....
 const getBet= (balance,lines) => {
   while(true){
      const bet = prompt("Enter the bets per line: ")
@@ -54,6 +102,7 @@ const getBet= (balance,lines) => {
   }
 }
 
+console.log(spin())
 let balance=deposit()
 const numberOfLines= getNumber()
 const bet =getBet(balance,numberOfLines)
