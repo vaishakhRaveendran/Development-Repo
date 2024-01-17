@@ -7,6 +7,7 @@
 // Play again
 
 const prompt = require('prompt-sync')();
+
 //Deposit amount
 const deposit = () => {
 while(true){
@@ -37,4 +38,22 @@ const getNumber = () => {
   }
 }
 
-deposit();
+
+//Get bet ....
+const getBet= (balance,lines) => {
+  while(true){
+     const bet = prompt("Enter the bets per line: ")
+     const numberbet=parseFloat(bet)
+     if (isNaN(numberbet)|| numberbet<=0 || numberbet > balance/lines){
+      console.log('Invalid Bet. Try again !!!!!')
+     }
+     else
+     {
+        return numberbet;
+     }
+  }
+}
+
+let balance=deposit()
+const numberOfLines= getNumber()
+const bet =getBet(balance,numberOfLines)
