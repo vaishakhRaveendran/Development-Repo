@@ -1,0 +1,6 @@
+Template Loading:
+If your app includes templates, Django needs to know where to find them. By adding your app to INSTALLED_APPS,
+Django knows where to look when resolving template paths.
+Static Files:
+Similarly, if your app includes static files (CSS, JavaScript, images, etc.), Django uses the INSTALLED_APPS
+setting to locate these files when collecting static files during the collectstatic management command.
