@@ -20,5 +20,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('monthly_closing/',include('monthly_closing.urls')),
+    path('',include('monthly_closing.urls')),
 ]
