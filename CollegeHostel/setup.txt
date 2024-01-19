@@ -4,3 +4,6 @@ Django knows where to look when resolving template paths.
 Static Files:
 Similarly, if your app includes static files (CSS, JavaScript, images, etc.), Django uses the INSTALLED_APPS
 setting to locate these files when collecting static files during the collectstatic management command.
+
+
+Migrate helps us to update table which is already created and got data in it.
