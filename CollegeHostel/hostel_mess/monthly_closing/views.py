@@ -8,6 +8,7 @@ def home(request):
     print(products)
     return render(request, 'monthly_closing/home.html', {'products': products})
 
+
 def add_products(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
@@ -16,7 +17,8 @@ def add_products(request):
             return redirect('monthly_closing-home')
     else:
         form = ProductForm()
-    return render(request,'monthly_closing/add_product.html')
+
+    return render(request, 'monthly_closing/add_product.html', {'form': form})
 
 def create_closing(request):
     return render(request, 'monthly_closing/create_closing.html')
