@@ -1,2 +1,28 @@
 {% extends 'monthly_closing/layout.html' %}
-{% block content %} <h2> Welcome to MH'25 Local hosted website </h2>{% endblock content %}
+{% block content %}
+<div class="container">
+    <form method="post" action=" ">
+        <table class="table table-bordered">
+            <h2>PRODUCTS</h2>
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Unit</th>
+                    <th scope="col">Product Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ product.productName }}</td>
+                        <td>{{ product.productUnit }}</td>
+                        <td>{{ product.productPrice }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</div>
+{% endblock content %}
