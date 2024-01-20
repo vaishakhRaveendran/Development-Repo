@@ -45,13 +45,13 @@ def modify(request):
 def create_closing(request):
     if request.method == 'POST':
         form = productForm(request.POST)
+        print(request.POST.get('productUnit'))
         if form.is_valid():
-            print(form)
+            return redirect('monthly_closing-home')
 
     else:
         form = productForm()
-
-    return render(request, 'monthly_closing/create_closing.html', {'form': form})
+        return render(request, 'monthly_closing/create_closing.html', {'form': form})
 
 
 def get_product_details(request):
@@ -61,7 +61,7 @@ def get_product_details(request):
 
         # Return product details as JSON
         data = {
-            'name': product.productNamename,
+            'name': product.productName,
             'unit': product.productUnit,
             'price': str(product.productPrice),  # Convert DecimalField to string
         }
