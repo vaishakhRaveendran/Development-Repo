@@ -16,7 +16,7 @@ class dropForm(forms.Form):
 ##################################################################################################################
 class productForm(forms.Form):
     productName = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}))
-    quantity = forms.DecimalField(label='Quantity/Weight')
+    quantity = forms.DecimalField(label='Quantity')
     unit = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'readonly': True}))
     unit_price = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control', 'readonly': True}))
     total_price = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control', 'readonly': True}), required=False)
@@ -27,12 +27,12 @@ class productForm(forms.Form):
         # Populate the choices for productName field
         self.fields['productName'].choices = Product.objects.values_list('productNo', 'productName')
 
-    def clean(self):
-        cleaned_data = super().clean()
-        quantity = cleaned_data.get('quantity')
-        unit_price = cleaned_data.get('unit_price')
-
-        if quantity and unit_price:
-            cleaned_data['total_price'] = quantity * unit_price
-
-        return cleaned_data
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     quantity = cleaned_data.get('quantity')
+    #     unit_price = cleaned_data.get('unit_price')
+    #
+    #     if quantity and unit_price:
+    #         cleaned_data['total_price'] = quantity * unit_price
+    #
+    #     return cleaned_data
