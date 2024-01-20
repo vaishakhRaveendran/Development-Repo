@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
-from .forms import addForm,dropForm
+from django.http import HttpResponse,JsonResponse
+from .forms import addForm,dropForm,productForm
 from .models import Product
 # Create your views here.
 def home(request):
@@ -20,10 +20,6 @@ def add_products(request):
 
     return render(request, 'monthly_closing/add_product.html', {'form': form})
 
-def create_closing(request):
-    return render(request, 'monthly_closing/create_closing.html')
-
-
 def drop_products(request):
     if request.method == 'POST':
         form = dropForm(request.POST)
@@ -42,13 +38,33 @@ def modify(request):
 
 
 
-def create_product(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('product_list')  # Replace 'product_list' with your actual URL name
-    else:
-        form = ProductForm()
 
-    return render(request, 'create_product.html', {'form': form})
+
+
+####################################################################
+def create_closing(request):
+    if request.method == 'POST':
+        form = productForm(request.POST)
+        if form.is_valid():
+            print(form)
+
+    else:
+        form = productForm()
+
+    return render(request, 'monthly_closing/create_closing.html', {'form': form})
+
+
+def get_product_details(request):
+    if request.method == 'GET':
+        product_id = request.GET.get('product_id')
+        product = Product.objects.get(pk=product_id)
+
+        # Return product details as JSON
+        data = {
+            'name': product.productNamename,
+            'unit': product.productUnit,
+            'price': str(product.productPrice),  # Convert DecimalField to string
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Invalid request method'})
