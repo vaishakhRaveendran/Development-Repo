@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .forms import ProductForm
+from .forms import addForm,dropForm
 from .models import Product
 # Create your views here.
 def home(request):
@@ -11,12 +11,12 @@ def home(request):
 
 def add_products(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = addForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('monthly_closing-home')
     else:
-        form = ProductForm()
+        form = addForm()
 
     return render(request, 'monthly_closing/add_product.html', {'form': form})
 
@@ -24,14 +24,18 @@ def create_closing(request):
     return render(request, 'monthly_closing/create_closing.html')
 
 
-
-
-
-
-
-
 def drop_products(request):
-    return HttpResponse("Hello, this is your drop product page!")
+    if request.method == 'POST':
+        form = dropForm(request.POST)
+        if form.is_valid():
+            product_id = form.cleaned_data.get('productId')
+            remove_product = Product.objects.get(productNo=product_id)
+            remove_product.delete()
+            return redirect('monthly_closing-home')
+    else:
+        form = dropForm()
+    return render(request, 'monthly_closing/drop_product.html', {'form': form})
+
 
 def modify(request):
     return HttpResponse("Hello, this is your modify page!")
