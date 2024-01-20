@@ -7,3 +7,9 @@ setting to locate these files when collecting static files during the collectsta
 
 
 Migrate helps us to update table which is already created and got data in it.
+
+
+Fields Attribute:
+fields = ['productName', 'productUnit', 'productPrice']: Also inside the Meta class, the fields attribute is set to a
+list of field names. These are the fields from the associated Product model that should be
+included in the form.
