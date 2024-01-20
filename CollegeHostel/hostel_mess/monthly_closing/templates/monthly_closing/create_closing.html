@@ -1,1 +1,58 @@
 {% extends 'monthly_closing/layout.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" id="closing-form">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">CREATE CLOSING</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">ADD</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Event listener for changes in product name (dropdown)
+    $('#closing-form').on('change', '[id^=id_productName]', function() {
+        // Make an AJAX request to get the unit and unit price based on the selected product name
+        var productId = $(this).val();
+        $.ajax({
+            url: '/get_product_details/' + productId + '/',  // Replace with your actual URL
+            type: 'GET',
+            success: function(data) {
+                if (data && 'unit' in data && 'unit_price' in data) {
+                    $('[id^=id_unit]').val(data.unit);
+                    $('[id^=id_unit_price]').val(data.unit_price);
+                    updateTotalPrice();
+                } else {
+                    console.error('Invalid data format received from server.');
+                }
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.error('Error fetching product details:', textStatus, errorThrown);
+            }
+        });
+    });
+
+    // Function to update total price based on quantity and unit price
+    function updateTotalPrice() {
+        var quantity = parseFloat($('[id^=id_quantity]').val()) || 0;
+        var unitPrice = parseFloat($('[id^=id_unit_price]').val()) || 0;
+        var totalPrice = quantity * unitPrice || 0;
+        $('[id^=id_total_price]').val(totalPrice.toFixed(2));
+    }
+
+    // Event listener for changes in quantity and unit price
+    $('#closing-form').on('input', '[id^=id_quantity], [id^=id_unit_price]', updateTotalPrice);
+
+    // Initial update on page load
+    updateTotalPrice();
+});
+</script>
