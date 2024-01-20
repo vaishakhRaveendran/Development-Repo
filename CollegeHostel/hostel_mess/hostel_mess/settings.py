@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "monthly_closing.apps.MonthlyClosingConfig",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -116,3 +118,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '192.168.29.226']
+
