@@ -13,3 +13,9 @@ Fields Attribute:
 fields = ['productName', 'productUnit', 'productPrice']: Also inside the Meta class, the fields attribute is set to a
 list of field names. These are the fields from the associated Product model that should be
 included in the form.
+
+
+
+Document Object Model
+Javascript can manipulate the current html document.DOM is how we acess various bits of the current screen to read or manipulate
+We can find pieces of the model using the id attribute and change them.We can write and read dom from javascript.
