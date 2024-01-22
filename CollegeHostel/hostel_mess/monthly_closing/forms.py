@@ -27,12 +27,12 @@ class productForm(forms.Form):
         # Populate the choices for productName field
         self.fields['productName'].choices = Product.objects.values_list('productNo', 'productName')
 
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     quantity = cleaned_data.get('quantity')
-    #     unit_price = cleaned_data.get('unit_price')
-    #
-    #     if quantity and unit_price:
-    #         cleaned_data['total_price'] = quantity * unit_price
-    #
-    #     return cleaned_data
+    def clean(self):
+        cleaned_data = super().clean()
+        quantity = cleaned_data.get('quantity')
+        unit_price = cleaned_data.get('unit_price')
+
+        if quantity and unit_price:
+            cleaned_data['total_price'] = quantity * unit_price
+
+        return cleaned_data
