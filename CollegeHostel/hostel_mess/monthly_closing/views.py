@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse,JsonResponse
 from .forms import addForm,dropForm,productForm
 from .models import Product
@@ -54,16 +54,17 @@ def create_closing(request):
         return render(request, 'monthly_closing/create_closing.html', {'form': form})
 
 
-def get_product_details(request):
-    if request.method == 'GET':
-        product_id = request.GET.get('product_id')
-        product = Product.objects.get(pk=product_id)
 
-        # Return product details as JSON
+
+def get_product_details(request,productId):
+    if request.method == 'GET':
+        product = get_object_or_404(Product, pk=productId)
+
+
         data = {
             'name': product.productName,
             'unit': product.productUnit,
-            'price': str(product.productPrice),  # Convert DecimalField to string
+            'price': str(product.productPrice),
         }
         return JsonResponse(data)
     else:
