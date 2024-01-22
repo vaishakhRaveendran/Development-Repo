@@ -15,34 +15,34 @@
         </form>
     </div>
 {% endblock content %}
-<script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
-<script type="text/javascript" src="{% static 'ajax.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-$(document).ready(function() {
-    console.log('Document ready.');
 
-    // Event listener for changes in product name (dropdown)
-    $('#id_productName').on('change', function() {
-        var productId = $(this).val();
-        console.log('Selected product name:', productId);
-        fetchProductDetails(productId);
+{% block jquery %}
+<script type="text/javascript" src="{% static 'monthly_closing/ajax.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log('Document ready.');
+        $('#id_productName').on('change', function() {
+            var productId = $(this).val();
+            fetchProductDetails(productId);
+        });
+
+        // Function to update total price based on quantity and unit price
+        function updateTotalPrice() {
+            console.log('Updating total price...');
+            var quantity = parseFloat($('[id^=id_quantity]').val()) || 20;
+            var unitPrice = parseFloat($('[id^=id_unit_price]').val()) || 4;
+            var totalPrice = quantity * unitPrice || 0;
+            console.log('Total price:', totalPrice);
+            $('[id^=id_unit_price]').val(unitPrice.toFixed(2))
+            $('[id^=id_total_price]').val(totalPrice.toFixed(2));
+        }
+
+        // Event listener for changes in quantity and unit price
+        $('#id_quantity, #id_unit_price').on('input',updateTotalPrice);
+
+        // Initial update on page load
+        updateTotalPrice();
     });
-
-    // Function to update total price based on quantity and unit price
-    function updateTotalPrice() {
-        console.log('Updating total price...');
-        var quantity = parseFloat($('[id^=id_quantity]').val()) || 0;
-        var unitPrice = parseFloat($('[id^=id_unit_price]').val()) || 0;
-        var totalPrice = quantity * unitPrice || 0;
-        console.log('Total price:', totalPrice);
-        $('[id^=id_total_price]').val(totalPrice.toFixed(2));
-    }
-
-    // Event listener for changes in quantity and unit price
-    $('#id_quantity, #id_unit_price').on('input',updateTotalPrice);
-
-    // Initial update on page load
-    updateTotalPrice();
-});
 </script>
+{% endblock jquery %}
