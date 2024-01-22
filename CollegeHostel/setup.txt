@@ -19,3 +19,5 @@ included in the form.
 Document Object Model
 Javascript can manipulate the current html document.DOM is how we acess various bits of the current screen to read or manipulate
 We can find pieces of the model using the id attribute and change them.We can write and read dom from javascript.
+The browser is not involved when the javascript is running.The javascript can directly communicate with the models with involving
+the routing technology.
