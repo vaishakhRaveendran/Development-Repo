@@ -21,3 +21,11 @@ Javascript can manipulate the current html document.DOM is how we acess various 
 We can find pieces of the model using the id attribute and change them.We can write and read dom from javascript.
 The browser is not involved when the javascript is running.The javascript can directly communicate with the models with involving
 the routing technology.
+
+Document is the entire page while the window is the part of the page you can view.
+AJAX is about loading data in the background and display it on the webpage, without reloading the whole page.
+AJAX is the art of exchanging data with a server, and update parts of a web page - without reloading the whole page
+
+Using jquery we are modifying a fully loaded document and if were to take any more data from the model or by route then
+the whole document is to be loaded but now using ajax we can route and update a small portion of the document without
+loading the entire document.
