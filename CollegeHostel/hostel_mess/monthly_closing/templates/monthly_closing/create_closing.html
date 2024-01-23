@@ -18,32 +18,50 @@
 
 {% block jquery %}
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="{% static 'monthly_closing/ajax.js' %}"></script>
+<!--<script type="text/javascript" src="{% static 'monthly_closing/ajax.js' %}"></script>-->
 
 <script type="text/javascript">
     $(document).ready(function() {
         console.log('Document ready.');
+
+        // Event listener for changes in quantity and unit price
+        $('#id_quantity, #id_unit_price').on('input', updateTotalPrice);
+
+        // Initial update on page load
+        updateTotalPrice();
+
         $('#id_productName').on('change', function() {
             var productId = $(this).val();
-            fetchProductDetails(productId);
+
+            $.ajax({
+                url: '/get_product_details/' + productId + '/',
+                type: 'GET',
+                success: function(data) {
+                    if (data && 'unit' in data && 'price' in data) {
+                        console.log(data);
+                        $('[id^=id_unit]').val(data['unit']);
+                        $('[id^=id_unit_price]').val(parseInt(data['price'], 10));
+                        updateTotalPrice();
+                    } else {
+                        console.error('Invalid data format received from server.');
+                    }
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    console.error('Error fetching product details:', textStatus, errorThrown);
+                }
+            });
         });
 
         // Function to update total price based on quantity and unit price
         function updateTotalPrice() {
             console.log('Updating total price...');
-            var quantity = parseFloat($('[id^=id_quantity]').val()) || 20;
-            var unitPrice = parseFloat($('[id^=id_unit_price]').val()) || 4;
-            var totalPrice = quantity * unitPrice || 10;
+            var quantity = parseFloat($('[id^=id_quantity]').val()) || 0;
+            var unitPrice = parseFloat($('[id^=id_unit_price]').val()) || 0;
+            var totalPrice = quantity * unitPrice || 0;
             console.log('Total price:', totalPrice);
-            $('[id^=id_unit_price]').val(unitPrice.toFixed(2))
+            $('[id^=id_unit_price]').val(unitPrice.toFixed(2));
             $('[id^=id_total_price]').val(totalPrice.toFixed(2));
         }
-
-        // Event listener for changes in quantity and unit price
-        $('#id_quantity, #id_unit_price').on('input',updateTotalPrice);
-
-        // Initial update on page load
-        updateTotalPrice();
     });
 </script>
 {% endblock jquery %}
