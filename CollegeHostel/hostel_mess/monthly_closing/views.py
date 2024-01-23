@@ -47,6 +47,7 @@ def create_closing(request):
         form = productForm(request.POST)
         print(request.POST.get('productUnit'))
         if form.is_valid():
+            print(form)
             return redirect('monthly_closing-home')
 
     else:
