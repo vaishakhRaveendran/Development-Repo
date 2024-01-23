@@ -18,7 +18,7 @@ class productForm(forms.Form):
     productName = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}))
     quantity = forms.DecimalField(label='Quantity')
     unit = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'readonly': True}))
-    unit_price = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control', 'readonly': True}))
+    unit_price = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control', 'readonly': False}))
     total_price = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control', 'readonly': True}), required=False)
 
 
