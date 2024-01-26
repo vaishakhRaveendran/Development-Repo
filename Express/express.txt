@@ -2,3 +2,36 @@ Express is a minimal node.js framework with higher level of abstraction.Express 
 very robust set of features like complex routing,middlewares,server side rendering and easier handling of request and
  responses.Express allows for rapid development of node.js applications since we don't have to reinvent the wheel.Express
  makes it easier to organize our applications into the mvc architecture
+
+ ### What is an API ###############
+ Application Programming Interface is a piece of software that can be used by another piece of software  in order to
+ allow applications to talk to each other..
+ Rest api means representational state transfer apis.There is a procedure for creating rest apis.
+ 1.Separate API into logical resources.
+ All the data we want to share should be divided into logical resources
+ Resource is an object or representation of something which has data associated with it.
+ Any information can be named as a resource.Eg user,tours,reviews.
+
+ 2.These resources should be exposed as resource based urls.
+ /getTour,/updateTour,/deleteTour
+
+
+ 3.To perform various actions on the data like creation,deletion and updation the apis should write
+ http methods and not urls.We should only have resources as end and not the action.The action should be
+ referred via the http methods. The verb will be in the http method.
+
+  /getTour--> get /tours
+  /updateTour --> put /tours  or   patch /tours
+  while using put the client have to send the entire data while with patch you only have to send the
+  updated portion
+  /addNewTour ---> post /tours
+  /deleteTour ----> delete /tours
+  /getToursByUser ---> get /users/3/tours
+
+  These allows to user to perform the basic crud operations....
+
+ 4.Send data as json and rest apis should be stateless..
+ Json is a lightweight data exchange format using for web applications.
+ Stateless means a request must contain all the necessary information to process a client request.The server
+ does not have to remember previous request.State refers to peice of information in application which could
+ change over time.Eg of state:LoggedIn,currentPage.
