@@ -17,7 +17,7 @@ app.get('/api/v1/tours/:id?',(req, res)=>{
             message: 'Invalid ID',
         });
     }
-    
+
     const tour=tours.find(el=>el.id===id);
     if (!tour){
         return res.status(404).json({
@@ -59,8 +59,26 @@ app.post('/api/v1/tours', (req, res) => {
         }
     });
 });
+//////////////////////////////////////////////////////////////
+//Creating patch end point
+app.patch('/api/v1/tours/:id',(req,res)=>{
+    const id = req.params.id * 1;
+    if (id > tours.length){
+        return res.status(404).json({
+            status: 'fail',
+            message: 'Invalid ID',
+        });
+    }
 
-//Create listner.
+    res.status(200).json({
+        status:'sucess',
+        data:{
+                    tour:'<Updated tour here......>',
+             }
+    });
+
+});
+//Created  listner.
 const PORT=3000;
 app.listen(PORT,()=>{
  console.log(`App listening on port ${PORT}...`);
