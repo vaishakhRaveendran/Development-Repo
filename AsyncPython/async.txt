@@ -1,0 +1,4 @@
+Synchronous programming means everything we write happens sequentially.
+Asycnronous programming refers to the occurance of events independent of main program flow and ways to deal with such
+events.
+Event loop is a programming construct or design pattern that waits for and dispatches events or messages in a program.

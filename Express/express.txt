@@ -1,0 +1,4 @@
+Express is a minimal node.js framework with higher level of abstraction.Express contain
+very robust set of features like complex routing,middlewares,server side rendering and easier handling of request and
+ responses.Express allows for rapid development of node.js applications since we don't have to reinvent the wheel.Express
+ makes it easier to organize our applications into the mvc architecture
