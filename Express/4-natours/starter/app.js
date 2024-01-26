@@ -60,7 +60,7 @@ app.post('/api/v1/tours', (req, res) => {
     });
 });
 //////////////////////////////////////////////////////////////
-//Creating patch end point
+//Creating delete end point
 app.patch('/api/v1/tours/:id',(req,res)=>{
     const id = req.params.id * 1;
     if (id > tours.length){
