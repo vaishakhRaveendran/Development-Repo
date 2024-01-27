@@ -2,18 +2,31 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 app.use(express.json());
+//Custom middle-ware
+app.use((req,res,next) => {
+    console.log('hello from middleware❤️❤️❤️');
+    next();
+});
+//Add time info
+app.use((req, res, next) => {
+    console.log('Check Time 🐔🐔');
+    req.requestTime = new Date().toISOString();
+    next();
+});
+
+
 
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`));
-
 
 //CALLBACKS
 //RETURN ALL TOURS
 const getTour = (req, res) => {
     const id = req.params.id * 1;
-
+    console.log(req.requestTime);
     if (id > tours.length) {
         return res.status(404).json({
             status: 'fail',
+            timeOfReq  :req.requestTime,
             message: 'Invalid ID',
         });
     }
