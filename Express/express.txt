@@ -35,3 +35,11 @@ very robust set of features like complex routing,middlewares,server side renderi
  Stateless means a request must contain all the necessary information to process a client request.The server
  does not have to remember previous request.State refers to peice of information in application which could
  change over time.Eg of state:LoggedIn,currentPage.
+
+
+ ///////////////////////////////////////////////////////////////////////
+ What are middle wares and express request-response cycle..
+ A request and response object is created for every request express receives from the user.These are processed to send back a
+ meaningful response to the user.To process the info we use something called middle ware which is capable of manipulating the response
+ and request object.The order of code is vey important in express since it determines the order in middleware stack.WE move to
+ the next middleware in the stack by calling the next() method.
