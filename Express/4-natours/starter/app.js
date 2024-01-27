@@ -7,7 +7,6 @@ const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simpl
 
 
 //CALLBACKS
-
 //RETURN ALL TOURS
 const getTour = (req, res) => {
     const id = req.params.id * 1;
@@ -47,7 +46,7 @@ const getAllTour = (req, res) => {
 };
 
 //ADD NEW TOUR
-function addNewTour(req, res) {
+const addNewTour = (req, res) => {
     const newId = tours[tours.length - 1].id + 1;
     const newTour = Object.assign({ id: newId }, req.body);
     tours.push(newTour);
@@ -70,7 +69,7 @@ function addNewTour(req, res) {
 }
 
 //UPDATE TOUR
-function updateTour(req, res) {
+const updateTour = (req, res) => {
     const id = req.params.id * 1;
     if (id > tours.length) {
         return res.status(404).json({
@@ -88,7 +87,7 @@ function updateTour(req, res) {
 }
 
 //DELETE TOUR
-function deleteTour(req, res) {
+const deleteTour = (req, res) => {
     const id = req.params.id * 1;
     if (id > tours.length) {
         return res.status(404).json({
