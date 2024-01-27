@@ -1,7 +1,13 @@
 const express = require('express');
 const fs = require('fs');
+const morgan = require('morgan');
+
 const app = express();
+
+//Built-in Middle-ware.
+app.use(morgan('dev'));
 app.use(express.json());
+
 //Custom middle-ware
 app.use((req,res,next) => {
     console.log('hello from middleware❤️❤️❤️');
@@ -9,7 +15,6 @@ app.use((req,res,next) => {
 });
 //Add time info
 app.use((req, res, next) => {
-    console.log('Check Time 🐔🐔');
     req.requestTime = new Date().toISOString();
     next();
 });
@@ -22,7 +27,6 @@ const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simpl
 //RETURN ALL TOURS
 const getTour = (req, res) => {
     const id = req.params.id * 1;
-    console.log(req.requestTime);
     if (id > tours.length) {
         return res.status(404).json({
             status: 'fail',
