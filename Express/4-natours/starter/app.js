@@ -53,7 +53,7 @@ const getTour = (req, res) => {
 
 //RETURN PARTICULAR TOUR
 const getAllTour = (req, res) => {
-    res.status(200).json({
+    return res.status(200).json({
         status: 'success',
         result: tours.length,
         data: {
@@ -118,20 +118,82 @@ const deleteTour = (req, res) => {
         data: null,
     });
 }
-//ROUTES
-app
- .route('/api/v1/tours')
+
+//CALLBACKS FOR USERS
+const getAllUsers=(req,res)=>{
+    res.status(500).json({
+        status:'error',
+        message:'This resource is not defined'
+    })
+
+}
+
+const updateUser=(req,res)=>{
+    res.status(500).json({
+        status:'error',
+        message:'This resource is not defined'
+    })
+
+}
+
+const deleteUser=(req,res)=>{
+    res.status(500).json({
+        status:'error',
+        message:'This resource is not defined'
+    })
+
+}
+
+const getUser=(req,res)=>{
+    return res.status(500).json({
+        status:'error',
+        message:'This resource is not defined'
+    })
+
+}
+
+const addNewUser=(req,res)=>{
+    res.status(500).json({
+        status:'error',
+        message:'This resource is not defined'
+    })
+
+}
+
+//ROUTES TOURS
+//tourRouter will be a middleware
+const tourRouter=express.Router();
+
+tourRouter  
+ .route('/')
  .get(getAllTour)
  .post(addNewTour);
 
-app
- .route('/api/v1/tours/:id')
+tourRouter
+ .route('/:id')
  .get(getTour)
  .patch(updateTour)
  .delete(deleteTour);
 
 
-//PORT LISTENER
+//ROUTES USERS
+const userRouter=express.Router();
+ 
+userRouter
+ .route('/')
+ .get(getAllUsers)
+ .post(addNewUser);
+
+ userRouter
+ .route('/:id')
+ .get(getUser)
+ .patch(updateUser)
+ .delete(deleteUser);
+
+//Router Mounting
+app.use('/api/v1/tours',tourRouter);
+app.use('/api/v1/users',userRouter)
+//START SERVER
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}...`);
