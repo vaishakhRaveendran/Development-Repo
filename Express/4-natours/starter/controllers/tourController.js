@@ -2,7 +2,7 @@ const fs = require('fs');
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`));
 //CALLBACKS
 //RETURN ALL TOURS
-export getTour = (req, res) => {
+exports.getTour = (req, res) => {
     const id = req.params.id * 1;
     if (id > tours.length) {
         return res.status(404).json({
@@ -29,7 +29,7 @@ export getTour = (req, res) => {
 };
 
 //RETURN PARTICULAR TOUR
-export getAllTour = (req, res) => {
+exports.getAllTour = (req, res) => {
     return res.status(200).json({
         status: 'success',
         result: tours.length,
@@ -40,7 +40,7 @@ export getAllTour = (req, res) => {
 };
 
 //ADD NEW TOUR
-export addNewTour = (req, res) => {
+exports.addNewTour = (req, res) => {
     const newId = tours[tours.length - 1].id + 1;
     const newTour = Object.assign({ id: newId }, req.body);
     tours.push(newTour);
@@ -63,7 +63,7 @@ export addNewTour = (req, res) => {
 }
 
 //UPDATE TOUR
-export updateTour = (req, res) => {
+exports.updateTour = (req, res) => {
     const id = req.params.id * 1;
     if (id > tours.length) {
         return res.status(404).json({
@@ -81,7 +81,7 @@ export updateTour = (req, res) => {
 }
 
 //DELETE TOUR
-export deleteTour = (req, res) => {
+exports.deleteTour = (req, res) => {
     const id = req.params.id * 1;
     if (id > tours.length) {
         return res.status(404).json({
