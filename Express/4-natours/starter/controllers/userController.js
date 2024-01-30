@@ -1,20 +1,11 @@
-//CALLBACKS FOR USERS
-export getAllUsers=(req,res)=>{
+exports.getAllUsers=(req,res)=>{
     res.status(500).json({
         status:'error',
         message:'This resource is not defined'
     })
 
 }
-export updateUser=(req,res)=>{
-    res.status(500).json({
-        status:'error',
-        message:'This resource is not defined'
-    })
-
-}
-
-export deleteUser=(req,res)=>{
+exports.updateUser=(req,res)=>{
     res.status(500).json({
         status:'error',
         message:'This resource is not defined'
@@ -22,7 +13,15 @@ export deleteUser=(req,res)=>{
 
 }
 
-export getUser=(req,res)=>{
+exports.deleteUser=(req,res)=>{
+    res.status(500).json({
+        status:'error',
+        message:'This resource is not defined'
+    })
+
+}
+
+exports.getUser=(req,res)=>{
     return res.status(500).json({
         status:'error',
         message:'This resource is not defined'
@@ -30,7 +29,7 @@ export getUser=(req,res)=>{
 
 }
 
-export addNewUser=(req,res)=>{
+exports.addNewUser=(req,res)=>{
     res.status(500).json({
         status:'error',
         message:'This resource is not defined'
