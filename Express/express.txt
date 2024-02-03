@@ -43,3 +43,13 @@ very robust set of features like complex routing,middlewares,server side renderi
  meaningful response to the user.To process the info we use something called middle ware which is capable of manipulating the response
  and request object.The order of code is vey important in express since it determines the order in middleware stack.WE move to
  the next middleware in the stack by calling the next() method.
+
+ ////////////////////////////////
+ db<-Collecitons<-Documents this is the heirrachy in mongodb. Mongodb automatically creates unique identifier for
+ each record in the collection.
+ Mongodb stores data in bson format.We could input a json object to mongodb which will get automatically converted to
+ a bson data internally..
+ Add operation
+  db.tours.find({rating:{$gte:4.9},price:{$lte:780}})
+ OR operations
+  db.tours.find({$or:[{price:{$lt:5000}},{rating:{$gte:4.8}}]})
