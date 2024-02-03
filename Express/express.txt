@@ -53,3 +53,9 @@ very robust set of features like complex routing,middlewares,server side renderi
   db.tours.find({rating:{$gte:4.9},price:{$lte:780}})
  OR operations
   db.tours.find({$or:[{price:{$lt:5000}},{rating:{$gte:4.8}}]})
+  How to do the select operations.Only the name will be shown..
+   db.tours.find({$or:[{price:{$lt:900}},{rating:{$gte:4.9}}]},{name:1})
+   To update an document you will have to first query and then update the part.
+    db.tours.updateOne({name:'Citadel'},{$set:{rate:4.99}})
+   Deletion
+   db.tours.deleteOne({rating:{$gte:4.9},price:{$lte:780}})
