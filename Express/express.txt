@@ -59,3 +59,7 @@ very robust set of features like complex routing,middlewares,server side renderi
     db.tours.updateOne({name:'Citadel'},{$set:{rate:4.99}})
    Deletion
    db.tours.deleteOne({rating:{$gte:4.9},price:{$lte:780}})
+
+   ############# What is Mangoose ###############
+   Mangoose is an object modelling library for mangodb and node.js for higher level of abstraction.
+   Object modelling library is a way we write javascript which will interact with databases. We could just use a mongodb driver instead but we will be use mangoose because it will giving extra functionality.It allows faster and smaller development.Mangoose give schema to model data and relationship.It also gives a simple query apis.Mangoose schema allows to define structure of data like the constants,data and constant values.Provide interface to database for crud operations.
