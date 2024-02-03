@@ -4,12 +4,14 @@ const morgan = require('morgan');
 //Import routes
 const tourRouter=require('./routes/tourRoutes')
 const userRouter=require('./routes/userRoutes')
-
+//Import express
 const app = express();
 
-
 //Built-in Middle-ware.
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development')
+{
+    app.use(morgan('dev'));
+}
 app.use(express.json());
 
 //Custom middle-ware
@@ -26,5 +28,5 @@ app.use((req, res, next) => {
 //Router Mounting
 app.use('/api/v1/tours',tourRouter);
 app.use('/api/v1/users',userRouter);
-//START SERVER
-module.exports=app;
+
+module.exports = app;

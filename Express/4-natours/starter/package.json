@@ -10,6 +10,8 @@
   "author": "vaishakh m",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "mongoose": "^5.13.22"
   }
 }
