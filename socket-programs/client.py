@@ -18,5 +18,5 @@ def send(msg):
     client.send(send_length)
     client.send(message)
 
-send("Hello World")
+send("How are you")
 send(DISCONNECT_MESSAGE)
