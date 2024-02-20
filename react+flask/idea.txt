@@ -1,1 +1,3 @@
 What are cross origin request?
+This allows to send request from different url to the flask backend.The frontend runs in node server
+and backend runs in flask server and we dont want any cross origin request issues.Henc we are using cors
