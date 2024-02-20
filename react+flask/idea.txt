@@ -1,0 +1,1 @@
+What are cross origin request?
