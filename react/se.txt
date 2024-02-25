@@ -9,4 +9,12 @@ But using react it is way easy we would write the html component inside the html
 <Counter /> THis is how you display a compnent inside jsx file.
 
 React hooks are the explicit way of telling react to update the dom if absolutely necessay.Updating dom is very resource intense and react dont want to do this unless asked to do.We will be registering a variable as state in react.
-We could use props to individually customise the components.....
+We could use props to individually customise the components.....Props is a parameter which is automatically passed into componet when node js runs the code..
+
+
+WHAT IS MAP FUNCTIONS
+Map functions allows us to map elements in a array with another elements in different array.
+
+WHEN A STATE GET UPDATED THE ENTIRE COMPONENT GET RERUN.
+USE EFFECT ALLOWS TO RUN A PEICE OF CODE WHEN A STATE UPDATES  or a component initially loads.
+Use effect is a function that get executed when the component loads.Use effect is called after everything in the component is rendered/mounted.When the state chagnes then use effect wont be called.The other parameter in use effect is array where we can pass the states for which we want the use effet to respond to.
